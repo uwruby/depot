@@ -9,6 +9,10 @@
 require 'test_helper'
 
 class LineItemsControllerTest < ActionController::TestCase
+  def setup
+    @request.session[:user_id] = users(:one).id
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -18,14 +22,6 @@ class LineItemsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-  end
-
-  test "should create line_item" do
-    assert_difference('LineItem.count') do
-      post :create, :line_item => { }
-    end
-
-    assert_redirected_to line_item_path(assigns(:line_item))
   end
 
   test "should show line_item" do

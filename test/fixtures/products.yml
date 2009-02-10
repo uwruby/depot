@@ -3,9 +3,12 @@
 one:
   title: MyString
   description: MyText
-  image_url: MyString
+  image_url: foo.gif
+  price: 1.2
 
 two:
-  title: MyString
+  title: two
   description: MyText
-  image_url: MyString
+  image_url: foo.jpg
+  price: 1.2
+

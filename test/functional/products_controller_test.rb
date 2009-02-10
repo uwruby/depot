@@ -9,6 +9,10 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
+  def setup
+    @request.session[:user_id] = users(:one).id
+  end
+
   test "should get index" do
     get :index
     assert_response :success
@@ -22,7 +26,12 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should create product" do
     assert_difference('Product.count') do
-      post :create, :product => { }
+      post :create, :product => {
+        :title => 'asdf',
+        :description => 'foo',
+        :price => '1.2',
+        :image_url => 'foo.gif',
+      }
     end
 
     assert_redirected_to product_path(assigns(:product))
@@ -39,7 +48,8 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should update product" do
-    put :update, :id => products(:one).id, :product => { }
+    put :update, :id => products(:one).id, :product =>
+      products(:one).attributes.merge({:title => 'xxxxx'})
     assert_redirected_to product_path(assigns(:product))
   end
 
