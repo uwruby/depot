@@ -21,7 +21,7 @@
 <%= javascript_tag "$$('.locale input').each(Element.hide)" %> 
 <% end %> 
     <%= image_tag("logo.png") %>
-    <%= @page_title || "Pragmatic Bookshelf" %>
+    <%= @page_title || I18n.t('layout.title') %>
   </div>
   <div id="columns">
     <div id="side">
@@ -33,10 +33,10 @@
     <!-- END:hidden_div -->
       <!-- END_HIGHLIGHT -->
 
-      <a href="http://www....">Home</a><br />
-      <a href="http://www..../faq">Questions</a><br />
-      <a href="http://www..../news">News</a><br />
-      <a href="http://www..../contact">Contact</a><br />
+      <a href="http://www...."><%= I18n.t('layout.side.home') %></a><br />
+      <a href="http://www..../faq"><%= I18n.t('layout.side.questions') %></a><br />
+      <a href="http://www..../news"><%= I18n.t('layout.side.news') %></a><br />
+      <a href="http://www..../contact"><%= I18n.t('layout.side.contact') %></a><br />
     </div>
     <div id="main">
       <!-- START:flash -->
