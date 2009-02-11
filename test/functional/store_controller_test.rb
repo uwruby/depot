@@ -9,8 +9,14 @@
 require 'test_helper'
 
 class StoreControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "store controller is localized" do
+    locale = LANGUAGES.to_a.first.last
+    @request.session[:user_id] = users(:one).id
+    get :index, :locale => LANGUAGES.to_a.first.last
+
+    translations = YAML.load_file("#{LOCALES_DIRECTORY}#{locale}.yml")
+
+    assert_match translations[locale]['layout']['side']['questions'],
+      @response.body
   end
 end
