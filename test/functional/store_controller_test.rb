@@ -12,7 +12,7 @@ class StoreControllerTest < ActionController::TestCase
   test "store controller is localized" do
     locale = LANGUAGES.to_a.first.last
     @request.session[:user_id] = users(:one).id
-    get :index, :locale => LANGUAGES.to_a.first.last
+    get :index, :locale => locale
 
     translations = YAML.load_file("#{LOCALES_DIRECTORY}#{locale}.yml")
 
